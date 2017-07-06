@@ -59,18 +59,15 @@ class UserUtils(object):
 
     @commands.command()
     async def itsimportant(self):
-        important = 'https://www.youtube.com/watch?v=q6EoRBvdVPQ&list=PL7XlqX4npddfrdpMCxBnNZXg2GFll7t5y'
-        await self.bot.say(important)
+        await self.bot.say('https://www.youtube.com/watch?v=q6EoRBvdVPQ&list=PL7XlqX4npddfrdpMCxBnNZXg2GFll7t5y')
 
     @commands.command()
     async def yee(self):
-        yee = 'https://youtu.be/q6EoRBvdVPQ'
-        await self.bot.say(yee)
+        await self.bot.say('https://youtu.be/q6EoRBvdVPQ')
 
     @commands.command()
     async def stop(self):
-        stop = 'https://www.youtube.com/watch?v=2k0SmqbBIpQ'
-        await self.bot.say(stop)
+        await self.bot.say('https://www.youtube.com/watch?v=2k0SmqbBIpQ')
 
     @commands.command()
     async def ping(self):
