@@ -1,32 +1,51 @@
 import requests
-import re
+
 
 from discord.ext import commands
 
 
-
-class derpi(object):
+class DerpiBooru(object):
     def __init__(self, bot: commands.Bot):
         self.bot = bot
         self.search_link = 'https://derpibooru.org/search.json?q='
         self.connection = '+'
         self.respond = ''
 
-    @commands.command(pass_context = True)
+    @commands.command(pass_context=True)
     async def dp(self, ctx):
+        amount = self.get_amount(ctx.message.content)
+        query = self.get_query(ctx.message.content)
+
+
+    def make_req(self, query):
         pass
 
-    def amount(self, message):
-        result = re.findall('\/{2}dp\s\d+', message)
+    def parse_result(self):
+        pass
+
+    def get_amount(self, message):
+        result = message.split()
         try:
-            number = int(result[0][5:])
-        except Exception:
+            if result[1].isdigit():
+                number = int(result[1])
+                if number > 0:
+                    return number
+                else:
+                    return 1
+            else:
+                return 1
+
+        except IndexError:
             return 1
 
-        if number > 0:
-            return number
-        else:
-            return 1
+    def get_query(self, message):
+        result = message.split()
+        del result[0]
+        if result[0].isdigit():
+            del result[0]
+
+        return '+'.join(result)
+
 
 def setup(bot):
-    bot.add_cog(derpi(bot))
+    bot.add_cog(DerpiBooru(bot))
