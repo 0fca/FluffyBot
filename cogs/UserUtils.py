@@ -76,4 +76,5 @@ class UserUtils(object):
 
 
 def setup(bot):
+    print("added UserUtils module")
     bot.add_cog(UserUtils(bot))

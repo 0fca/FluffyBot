@@ -1,4 +1,5 @@
 import requests
+import json
 from discord.ext import commands
 
 
@@ -14,16 +15,20 @@ class DerpiBooru(object):
     async def dp(self, ctx):
         amount = self.get_amount(ctx.message.content)
         query = self.get_query(ctx.message.content)
-        self.make_req(query,amount)
+        self.make_req(query)
 
-    def make_req(self, query, amount):
+        for i in range(0, amount):
+            await self.bot.say(self.entries[i])
+
+    def make_req(self, query):
         req_mess = self.search_link + query
         self.respond = requests.get(req_mess)
         self.parse_result(self.respond)
 
     def parse_result(self, result):
-        print(result.content)
-        pass
+        entries =  json.loads(result.content)
+        for entry in entries['search']:
+            self.entries.append("http:"+entry['image'])
 
     def get_amount(self, message):
         result = message.split()
