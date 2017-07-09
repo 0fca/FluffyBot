@@ -1,6 +1,4 @@
 import requests
-
-
 from discord.ext import commands
 
 
@@ -10,17 +8,21 @@ class DerpiBooru(object):
         self.search_link = 'https://derpibooru.org/search.json?q='
         self.connection = '+'
         self.respond = ''
+        self.entries = []
 
     @commands.command(pass_context=True)
     async def dp(self, ctx):
         amount = self.get_amount(ctx.message.content)
         query = self.get_query(ctx.message.content)
+        self.make_req(query,amount)
 
+    def make_req(self, query, amount):
+        req_mess = self.search_link + query
+        self.respond = requests.get(req_mess)
+        self.parse_result(self.respond)
 
-    def make_req(self, query):
-        pass
-
-    def parse_result(self):
+    def parse_result(self, result):
+        print(result.content)
         pass
 
     def get_amount(self, message):
@@ -34,7 +36,6 @@ class DerpiBooru(object):
                     return 1
             else:
                 return 1
-
         except IndexError:
             return 1
 
@@ -43,9 +44,9 @@ class DerpiBooru(object):
         del result[0]
         if result[0].isdigit():
             del result[0]
-
         return '+'.join(result)
 
 
 def setup(bot):
+    print("added DP module")
     bot.add_cog(DerpiBooru(bot))

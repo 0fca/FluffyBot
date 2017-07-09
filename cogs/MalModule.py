@@ -122,5 +122,6 @@ class MalHandler(object):
 
 
 def setup(bot):
+    print("added Mal module")
     bot.add_cog(MalHandler(bot))
 
