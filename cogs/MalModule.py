@@ -123,3 +123,4 @@ class MalHandler(object):
 
 def setup(bot):
     bot.add_cog(MalHandler(bot))
+
