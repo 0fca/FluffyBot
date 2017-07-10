@@ -7,4 +7,5 @@ To self host it, you will need to have python 3.5+ installed.
 Dependencies:
 - Python 3.5 
 - Discord.py 
+- Requests 2.18.1+
 - ruamel.yaml

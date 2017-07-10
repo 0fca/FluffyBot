@@ -44,7 +44,8 @@ class UserUtils(object):
         random_quotes = ['Man...',
                          "ARE YOU FUCKING KIDDING ME?!",
                          " ",
-                         "well..."]
+                         "well...",
+                         "..."]
         await self.bot.say(random.choice(random_quotes) + '\n' + 'https://www.youtube.com/watch?v=5FjWe31S_0g')
 
     @commands.command()
@@ -75,4 +76,5 @@ class UserUtils(object):
 
 
 def setup(bot):
+    print("added UserUtils module")
     bot.add_cog(UserUtils(bot))
