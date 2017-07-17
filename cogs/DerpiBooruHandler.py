@@ -1,5 +1,5 @@
 import requests
-import json
+from cogs.utils import jsonScrapper
 from discord.ext import commands
 
 
@@ -17,7 +17,7 @@ class DerpiBooru(object):
         query = self.get_query(ctx.message.content)
         self.make_req(query)
 
-        for i in range(0, amount):
+        for i in range(0, amount + 1 ):
             await self.bot.say(self.entries[i])
 
     def make_req(self, query):
@@ -26,19 +26,20 @@ class DerpiBooru(object):
         self.parse_result(self.respond)
 
     def parse_result(self, result):
-        entries =  json.loads(result.content)
-        for entry in entries['search']:
-            self.entries.append("http:"+entry['image'])
+        keys = ['image']
+        scrapper = jsonScrapper.jsonScrapper(keys, result.text)
+        entries = scrapper.get_values()
+        for item in entries[keys[0]]:
+            self.entries.append("https:" + item)
+
+        print(self.entries)
 
     def get_amount(self, message):
         result = message.split()
         try:
-            if result[1].isdigit():
-                number = int(result[1])
-                if number > 0:
-                    return number
-                else:
-                    return 1
+            if result[1].isdigit() and int(result[1]) > 0:
+                print(result[1])
+                return int(result[1])
             else:
                 return 1
         except IndexError:
@@ -46,8 +47,10 @@ class DerpiBooru(object):
 
     def get_query(self, message):
         result = message.split()
+        # delete command
         del result[0]
         if result[0].isdigit():
+            # delete number of entries to show if they exist
             del result[0]
         return '+'.join(result)
 
