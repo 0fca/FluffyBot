@@ -1,10 +1,12 @@
 import random
+from framework.botErrors import BotErrors
 from discord.ext import commands
 
 
 class UserUtils(object):
     def __init__(self, bot: commands.Bot):
         self.bot = bot
+        self.botError = BotErrors.BotErrors()
         self.reactions = {
             'fuckthisshit': 'https://www.youtube.com/watch?v=5FjWe31S_0g',
             'crusade': 'https://www.youtube.com/watch?v=Ky2UP5j_pK8'}
@@ -28,6 +30,20 @@ class UserUtils(object):
         reaction = ctx.message.content[11:].lower()
         if reaction in self.reactions:
             await self.bot.say(self.reactions[reaction])
+    #
+    # @commands.command()
+    # async def loli(self):
+    #     await self.bot.say(self.botError.NotLoliChannel())
+
+    #
+    # @commands.command()
+    # async def e6(self):
+    #     await self.bot.say(self.botError.NotNSFWChannel())
+
+    @commands.command()
+    async def dearGod(self):
+        #in the name of god - powerwolfSS
+        await self.bot.say('https://www.youtube.com/watch?v=mobtxEJHhY4')
 
     @commands.command()
     async def crusade(self):

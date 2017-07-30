@@ -4,7 +4,7 @@ import collections
 import xml.etree.cElementTree as ETree
 
 from discord.ext import commands
-from . import utils
+from framework import utils
 
 
 class AnimeEntry(object):

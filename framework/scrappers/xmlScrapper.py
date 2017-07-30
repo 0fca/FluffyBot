@@ -1,4 +1,6 @@
 import re
+
+
 class xmlScrapper(object):
 
     def __init__(self, keys: [], xml: str):
