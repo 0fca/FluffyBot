@@ -7,18 +7,18 @@ class xmlScrapper(object):
         self.keys = keys
         self.xml = xml
         self.result = {}
-        self.splited = []
+        self.spliced = []
 
     def get_values(self):
 
-        self.splited = re.split("[<>\]=\"]", self.xml)
-        for i, item in enumerate(self.splited):
+        self.spliced = re.split("[<>\]=\"]", self.xml)
+        for i, item in enumerate(self.spliced):
             if item in self.keys:
                 try:
-                    self.result[item].append(self.splited[i + 1].replace("\n", ''))
+                    self.result[item].append(self.spliced[i + 1].replace("\n", ''))
                 except KeyError:
                     self.result[item] = list()
-                    self.result[item].append(self.splited[i + 1].replace("\n", ''))
+                    self.result[item].append(self.spliced[i + 1].replace("\n", ''))
         return self.result
 
     def set_keys(self, new_keys: []):

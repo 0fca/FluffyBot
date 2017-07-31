@@ -1,10 +1,11 @@
-import math
-import requests
 import collections
+import math
 import xml.etree.cElementTree as ETree
 
+import requests
 from discord.ext import commands
-from framework import utils
+
+from cogs import utils
 
 
 class AnimeEntry(object):

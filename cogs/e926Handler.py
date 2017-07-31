@@ -1,6 +1,7 @@
 import requests
 from discord.ext import commands
-from framework.scrappers import jsonScrapper
+
+from cogs.utils.scrappers import jsonScrapper
 
 
 class E621Handler(object):

@@ -1,6 +1,6 @@
 from discord.ext import commands
-from framework import utils
-from framework.botErrors import BotErrors
+
+from cogs import utils
 
 opts = {'command_prefix': '//',
         'description': utils.bot_description,

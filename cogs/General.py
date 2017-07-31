@@ -1,6 +1,6 @@
 import random
-from framework.botErrors import BotErrors
 from discord.ext import commands
+from cogs.utils.botErrors import BotErrors
 
 
 class UserUtils(object):
@@ -30,15 +30,6 @@ class UserUtils(object):
         reaction = ctx.message.content[11:].lower()
         if reaction in self.reactions:
             await self.bot.say(self.reactions[reaction])
-    #
-    # @commands.command()
-    # async def loli(self):
-    #     await self.bot.say(self.botError.NotLoliChannel())
-
-    #
-    # @commands.command()
-    # async def e6(self):
-    #     await self.bot.say(self.botError.NotNSFWChannel())
 
     @commands.command()
     async def dearGod(self):

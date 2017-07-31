@@ -7,33 +7,33 @@ class jsonScrapper(object):
         self.keys = keys
         self.json_str = json
         self.result = {}
-        self.splited = []
+        self.spliced = []
 
     def get_values(self,  additional_key=0):
         """
         method scraping out the needed values out of json string
         :return: dict containing all the needed values under specified keys
         """
-        self.splited = re.split("[,:]", self.json_str)
+        self.spliced = re.split("[,:]", self.json_str)
 
-        print(self.splited)
+        print(self.spliced)
 
-        for i , element in enumerate(self.splited):
-            self.splited[i] = element.replace('"', '').replace('{', '').replace('}', '')
+        for i , element in enumerate(self.spliced):
+            self.spliced[i] = element.replace('"', '').replace('{', '').replace('}', '')
 
-        for i, item in enumerate(self.splited):
+        for i, item in enumerate(self.spliced):
             if item in self.keys:
                 try:
                     if additional_key > 0:
-                        self.result[item].append(self.splited[i + 1] + self.splited[i + additional_key])
+                        self.result[item].append(self.spliced[i + 1] + self.spliced[i + additional_key])
                     else:
-                        self.result[item].append(self.splited[i + 1])
+                        self.result[item].append(self.spliced[i + 1])
                 except KeyError:
                     self.result[item] = list()
                     if additional_key > 0:
-                        self.result[item].append(self.splited[i + 1] + self.splited[i + additional_key])
+                        self.result[item].append(self.spliced[i + 1] + self.spliced[i + additional_key])
                     else:
-                        self.result[item].append(self.splited[i + 1])
+                        self.result[item].append(self.spliced[i + 1])
         return self.result
 
     def set_keys(self, new_keys: []):
