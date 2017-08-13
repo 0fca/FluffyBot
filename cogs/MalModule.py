@@ -45,7 +45,7 @@ class MalHandler(object):
 
         self.showed = False
 
-    @commands.command(pass_context=True)
+    @commands.command()
     async def searchMal(self, ctx):
         search_type = ctx.message.content[12:17].lower()
         search_query = ctx.message.content[18:]

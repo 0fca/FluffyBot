@@ -4,7 +4,8 @@ class BotErrors(object):
                 'empty_query': 'I have not found anything you wanted to search for on this site, sorry \n Maybe try different tags or site?',
                 'NoCommand':    'There is no such command. Try using the help command if you need some help',
                 'NotNSFWChannel': 'http://i.imgur.com/cXx4arL.png',
-                'NotLoliChannel': 'https://i.imgur.com/AvPnHE8.png'
+                'NotLoliChannel': 'https://i.imgur.com/AvPnHE8.png',
+                'dictNull': 'dict is null'
                             }
 
     def add_error(self,name, message):

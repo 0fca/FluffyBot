@@ -1,5 +1,5 @@
 from discord.ext import commands
-
+import discord
 from cogs import utils
 
 opts = {'command_prefix': '//',
@@ -13,6 +13,7 @@ async def on_ready():
     print('Logged in as')
     print(bot.user.name)
     print(bot.user.id)
+    print(discord.version_info)
     print('------')
 
 if __name__ == '__main__':

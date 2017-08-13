@@ -1,3 +1,4 @@
+import ujson
 import re
 
 
@@ -9,33 +10,61 @@ class jsonScrapper(object):
         self.result = {}
         self.spliced = []
 
-    def get_values(self,  additional_key=0):
-        """
-        method scraping out the needed values out of json string
-        :return: dict containing all the needed values under specified keys
-        """
-        self.spliced = re.split("[,:]", self.json_str)
+#avalible parsers
+        self.indexes = {"default": 0,
+                        "e9": 1,
+                        "e6": 2,
+                        "dp": 3}
 
-        print(self.spliced)
+#decide which to use, and get those values
+    def get_values(self, site_index = "default"):
+        items = ujson.decode(self.json_str)
+        length = len(items)
+        self.result.clear()
+        if site_index in self.indexes:
+            type = self.indexes[site_index]
 
-        for i , element in enumerate(self.spliced):
-            self.spliced[i] = element.replace('"', '').replace('{', '').replace('}', '')
+            if type == 0:
+                print("Please, provide and index by which you want to parse your json")
+            if type == 1:
+                print("e9")
+                self.__e9(items,length)
+            if type == 2:
+                print("e6")
+                self.__e6(items, length)
+            if type == 3:
+                print("dp")
+                self.__dp(items, length)
 
-        for i, item in enumerate(self.spliced):
-            if item in self.keys:
-                try:
-                    if additional_key > 0:
-                        self.result[item].append(self.spliced[i + 1] + self.spliced[i + additional_key])
-                    else:
-                        self.result[item].append(self.spliced[i + 1])
-                except KeyError:
-                    self.result[item] = list()
-                    if additional_key > 0:
-                        self.result[item].append(self.spliced[i + 1] + self.spliced[i + additional_key])
-                    else:
-                        self.result[item].append(self.spliced[i + 1])
+        else: print("Wrong index, please provide a valid index")
+
         return self.result
 
+#actual parsers
+    def __e9(self, items, lenght):
+        for item in items:
+            for key in self.keys:
+                try:
+                    self.result[key].append(item[key])
+                except KeyError:
+                    self.result[key] = []
+                    self.result[key].append(item[key])
+
+    def __e6(self,items, lenght):
+        self.__e9(items, lenght)
+
+    def __dp(self, items, lenght):
+        for item in items['search']:
+            for key in self.keys:
+                try:
+                    if key == 'image': self.result[key].append("http:" + item[key])
+                    else:self.result[key].append(item[key])
+                except KeyError:
+                    self.result[key] = []
+                    if key == 'image': self.result[key].append("http:" + item[key])
+                    else: self.result[key].append(item[key])
+
+#setters
     def set_keys(self, new_keys: []):
         """
         new list of key, scrapper will search for them in the json string
@@ -56,3 +85,6 @@ class jsonScrapper(object):
 
     def get_dict(self):
         return self.result
+
+    def get_site_indexes(self):
+        return self.indexes

@@ -10,49 +10,44 @@ class DerpiBooru(object):
         self.search_link = 'https://derpibooru.org/search.json?q='
         self.connection = '+'
         self.respond = ''
-        self.entries = []
+        self.entries = {}
+        self.keys = ['image']
 
     @commands.command(pass_context=True)
     async def dp(self, ctx):
-        amount = self.get_amount(ctx.message.content)
-        query = self.get_query(ctx.message.content)
+        split_message = ctx.message.content.split()
+        amount = self.get_amount(split_message)
+        query = self.get_query(split_message)
         self.make_req(query)
 
-        for i in range(0, amount + 1 ):
-            await self.bot.say(self.entries[i])
+        for i in range(amount):
+            await ctx.send(self.entries[self.keys[0]][i])
 
     def make_req(self, query):
         req_mess = self.search_link + query
         self.respond = requests.get(req_mess)
+        
         self.parse_result(self.respond)
 
     def parse_result(self, result):
-        keys = ['image']
-        scrapper = jsonScrapper.jsonScrapper(keys, result.text)
-        entries = scrapper.get_values()
+        scrapper = jsonScrapper.jsonScrapper(self.keys, result.text)
         self.entries.clear()
-        for item in entries[keys[0]]:
-            self.entries.append("https:" + item)
+        self.entries = scrapper.get_values("dp")
 
-    def get_amount(self, message):
-        result = message.split()
+    @staticmethod
+    def get_amount(message_split):
         try:
-            if result[1].isdigit() and int(result[1]) > 0:
-                print(result[1])
-                return int(result[1])
-            else:
-                return 1
+            return  int(message_split[1]) if message_split[1].isdigit() and int(message_split[1]) > 0 else 1
         except IndexError:
             return 1
 
-    def get_query(self, message):
-        result = message.split()
-        # delete command
-        del result[0]
-        if result[0].isdigit():
-            # delete number of entries to show if they exist
-            del result[0]
-        return '+'.join(result)
+    @staticmethod
+    def get_query(message_split):
+        #try not deleting it
+        del message_split[0]
+        if message_split[0].isdigit():
+            del message_split[0]
+        return '+'.join(message_split)
 
 
 def setup(bot):
