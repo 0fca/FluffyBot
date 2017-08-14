@@ -3,7 +3,7 @@ from discord.ext import commands
 from cogs.utils.botErrors import BotErrors
 from cogs.utils.checks import checks
 
-class UserUtils(object):
+class fun_commands(object):
     def __init__(self, bot: commands.Bot):
         self.bot = bot
         self.botError = BotErrors.BotErrors()
@@ -108,4 +108,4 @@ class UserUtils(object):
 
 def setup(bot):
     print("added UserUtils module")
-    bot.add_cog(UserUtils(bot))
+    bot.add_cog(fun_commands(bot))

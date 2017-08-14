@@ -32,7 +32,7 @@ class MangaEntry(object):
         self.volume = volume
 
 
-class MalHandler(object):
+class MAL(object):
     def __init__(self, bot: commands.Bot):
         self.bot = bot
         self.respond = ''
@@ -124,5 +124,5 @@ class MalHandler(object):
 
 def setup(bot):
     print("added Mal module")
-    bot.add_cog(MalHandler(bot))
+    bot.add_cog(MAL(bot))
 
