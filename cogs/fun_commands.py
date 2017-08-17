@@ -95,15 +95,12 @@ class fun_commands(object):
         else: await ctx.send(self.botError.NotLoliChannel())
 
     @commands.command()
-    async def sendpm(self, ctx):
-        # get all the cogs, and all it's commands to dict
-        # if subcommand was not invoked, then send list of them, and
-        # encurage user to choose about which one he want to read
-        # show him example
-        # send him everything via PM
-
-        user = ctx.author
-        await user.send("hi")
+    async def decide(self, ctx, *, args: str):
+        split = args.split('or')
+        try:
+            await ctx.send(split[random.randint(0, 1)])
+        except IndexError:
+            await ctx.send("Something went wrong. Here's how to use this command: \n [prefix]decide first or second")
 
 
 def setup(bot):
