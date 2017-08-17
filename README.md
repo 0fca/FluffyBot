@@ -8,4 +8,4 @@ Dependencies:
 - Python 3.5 
 - Discord.py 
 - Requests 2.18.1+
-- ruamel.yaml
+- ujson
