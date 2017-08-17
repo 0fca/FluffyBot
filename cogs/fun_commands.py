@@ -13,24 +13,23 @@ class fun_commands(object):
         self.checks = checks()
 
     @commands.command()
-    async def boop(self, ctx):
-        if len(ctx.message.content) > 6:
-            await ctx.send('boops ' + ctx.message.content[6:])
+    async def boop(self, ctx, *, args: str = ''):
+        if len(args) > 0:
+            await ctx.send('boops ' + args)
         else:
-            await ctx.send('boops ' + ctx.message.author.mention)
+            await ctx.send('boops ' + ctx.author.mention)
 
     @commands.command()
-    async def kill(self, ctx):
-        if len(ctx.message.content) > 6:
-            await ctx.send('kills' + ctx.message.content[6:])
+    async def kill(self, ctx, *, args: str = ''):
+        if len(args) > 0:
+            await ctx.send('kills ' + args)
         else:
-            await ctx.send(ctx.message.author.mention + ' commits suicide')
+            await ctx.send(ctx.author.mention + ' commits suicide')
 
     @commands.command()
-    async def reaction(self, ctx):
-        reaction = ctx.message.content[11:].lower()
-        if reaction in self.reactions:
-            await ctx.send(self.reactions[reaction])
+    async def reaction(self, ctx, *, args: str):
+        if args.lower() in self.reactions:
+            await ctx.send(self.reactions[args.lower()])
 
     @commands.command()
     async def dearGod(self, ctx):
@@ -40,12 +39,13 @@ class fun_commands(object):
     @commands.command()
     async def crusade(self, ctx):
         random_quotes = ['Non omnis moriar!',
+                         "Non nobis domine!",
                          'DEUS VULT',
                          'It\'s crusade time!',
                          'I feel like I need a crusade',
                          'It\'s a perfect day for a crusade',
                          'What a lovely time for a crusade']
-        await ctx.send(random.choice(random_quotes) + '\n' + 'https://www.youtube.com/watch?v=Ky2UP5j_pK8')
+        await ctx.send(random_quotes[random.randint(0, len(random_quotes))] + '\n' + 'https://www.youtube.com/watch?v=Ky2UP5j_pK8')
 
     @commands.command()
     async def fuckthis(self,ctx):
@@ -54,7 +54,7 @@ class fun_commands(object):
                          " ",
                          "well...",
                          "..."]
-        await ctx.send(random.choice(random_quotes) + '\n' + 'https://www.youtube.com/watch?v=5FjWe31S_0g')
+        await ctx.send(random_quotes[random.randint(0, len(random_quotes))] + '\n' + 'https://www.youtube.com/watch?v=5FjWe31S_0g')
 
     @commands.command()
     async def ayylmao(self, ctx):
@@ -81,18 +81,6 @@ class fun_commands(object):
     @commands.command()
     async def ping(self, ctx):
         await ctx.send('Pong!')
-
-    @commands.command()
-    async def nsfw(self, ctx):
-        if ctx.channel.is_nsfw():
-           await ctx.send("hello")
-        else: await ctx.send(self.botError.NotNSFWChannel())
-
-    @commands.command()
-    async def loli(self, ctx):
-        if self.checks.is_loli(ctx.message.channel):
-            await ctx.send("loli time")
-        else: await ctx.send(self.botError.NotLoliChannel())
 
     @commands.command()
     async def decide(self, ctx, *, args: str):
