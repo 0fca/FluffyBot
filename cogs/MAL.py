@@ -1,10 +1,11 @@
-import math
-import requests
 import collections
+import math
 import xml.etree.cElementTree as ETree
 
+import requests
 from discord.ext import commands
-from . import utils
+
+from cogs import utils
 
 
 class AnimeEntry(object):
@@ -31,7 +32,7 @@ class MangaEntry(object):
         self.volume = volume
 
 
-class MalHandler(object):
+class MAL(object):
     def __init__(self, bot: commands.Bot):
         self.bot = bot
         self.respond = ''
@@ -44,7 +45,7 @@ class MalHandler(object):
 
         self.showed = False
 
-    @commands.command(pass_context=True)
+    @commands.command()
     async def searchMal(self, ctx):
         search_type = ctx.message.content[12:17].lower()
         search_query = ctx.message.content[18:]
@@ -122,4 +123,6 @@ class MalHandler(object):
 
 
 def setup(bot):
-    bot.add_cog(MalHandler(bot))
+    print("added Mal module")
+    bot.add_cog(MAL(bot))
+
