@@ -1,0 +1,21 @@
+{
+  "bot_token": "MzI4MTc0NjM1OTY1MzQ5ODg4.DDEfKQ.WwWRVS_KE_GNbqoyhqTxAq4-WoY",
+  "owner_id": "328174635965349888",
+  "default_status": "//help for a list of commands",
+  "description": "This bot is full of fluff! It is literally made out of it! No, but honestly, if you are looking for the most retarded bot in the universe, you have come to the right place.",
+  "command_prefix": "//",
+
+  "ml_search_link": "https://myanimelist.net/api/",
+  "ml_type": ["anime", "manga"],
+  "ml_suffix": "/search.xml?q=",
+
+  "imgur_client_id": "2cdd58a1a90bde9",
+  "imgur_client_secret": "48830d869df15a79a5a539079830cc17183bf7ff",
+
+  "extensions": [
+    "cogs.fun_commands",
+    "cogs.DerpiBooru",
+    "cogs.e926",
+    "cogs.Reddit"
+  ]
+}
