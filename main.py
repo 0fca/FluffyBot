@@ -1,6 +1,5 @@
 from discord.ext import commands
 import discord
-from cogs import utils
 import cogs.utils.configJSON as configJson
 
 opts = {'command_prefix': configJson.default_prefix,

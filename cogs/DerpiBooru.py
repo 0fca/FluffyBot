@@ -25,7 +25,7 @@ class DerpiBooru(object):
     def make_req(self, query):
         req_mess = self.search_link + query
         respond = requests.get(req_mess)
-        
+
         self.parse_result(respond)
 
     def parse_result(self, result):
@@ -35,7 +35,7 @@ class DerpiBooru(object):
 
     @staticmethod
     def get_query(message_split):
-        #try not deleting it
+        # try not deleting it
         if message_split[-1].isdigit():
             del message_split[-1]
         return '+'.join(message_split)
@@ -44,4 +44,3 @@ class DerpiBooru(object):
 def setup(bot):
     print("added DP module")
     bot.add_cog(DerpiBooru(bot))
-

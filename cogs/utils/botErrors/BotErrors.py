@@ -5,17 +5,16 @@ class BotErrors(object):
                 'NoCommand':    'There is no such command. Try using the help command if you need some help',
                 'NotNSFWChannel': 'http://i.imgur.com/cXx4arL.png',
                 'NotLoliChannel': 'https://i.imgur.com/AvPnHE8.png',
-                'dictNull': 'dict is null'
-                            }
+                'dictNull': 'dict is null'}
 
-    def add_error(self,name, message):
+    def add_error(self, name, message):
         self.extra_errors[name] = message
 
-    def get_error(self,name):
+    def get_error(self, name):
         try:
-            return (self.extra_errors[name])
+            return self.extra_errors[name]
         except KeyError:
-            return ('error: no such error message')
+            return 'error: no such error message'
 
     def get_all_errors(self):
         return self.extra_errors

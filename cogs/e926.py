@@ -11,7 +11,7 @@ class E926(object):
         self.keys = ['file_url']
 
     @commands.command()
-    async def e9(self, ctx, *,arg: str):
+    async def e9(self, ctx, *, arg: str):
         split_message = arg.split()
 
         amount = int(split_message[-1]) if split_message[-1].isdigit() and int(split_message[-1]) > 0 else 1
@@ -35,7 +35,7 @@ class E926(object):
 
     @staticmethod
     def get_query(message_split):
-        #try not deleting it
+        # try not deleting it
         if message_split[-1].isdigit():
             del message_split[-1]
         return '+'.join(message_split)

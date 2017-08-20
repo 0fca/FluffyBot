@@ -53,3 +53,8 @@ try:
 except Exception:
     print('you have not specified one of the MAL configuration fields')
 
+try:
+    imgur_token = bot_config["imgur_client_id"]
+except Exception:
+    print("you have no imgur")
+

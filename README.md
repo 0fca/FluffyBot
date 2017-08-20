@@ -1,6 +1,5 @@
-Fluffy bot is the most retarded bot ever created.
-If you're looking for something which will let you browse SFW and NSFW stuff, have some fun commands, let you listen to your favourite music from youtube and be as much retarded as possible. 
-Then this bot is right for you.  
+Fluffy bot is a general purpose bot, but mostly utility and fun based one. It allows you to listen you your favorite music, search for images on various sites and much more! 
+Please note, it's still in development and not everything is working or implemented.
 
 To self host it, you will need to have python 3.5+ installed.  
 

@@ -37,6 +37,7 @@ class jsonScrapper(object):
                 self.__dp(items, length)
             if type == 4:
                 print("imgur")
+                self.imgur(items, length)
 
         else:
             print("Wrong index, please provide a valid index")
@@ -72,9 +73,13 @@ class jsonScrapper(object):
                         self.result[key].append(item[key])
 
     def imgur(self, items, lenght):
-        for item in self.items:
+        for item in items['data']:
             for key in self.keys:
-                pass
+                try:
+                    self.result[key].append(item[key])
+                except KeyError:
+                    self.result[key] = []
+                    self.result[key].append(item[key])
 
 # setters
     def set_keys(self, new_keys: []):

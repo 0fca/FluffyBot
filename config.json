@@ -16,6 +16,6 @@
     "cogs.fun_commands",
     "cogs.DerpiBooru",
     "cogs.e926",
-    "cogs.e621"
+    "cogs.Reddit"
   ]
 }

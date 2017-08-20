@@ -1,14 +1,14 @@
 from discord.ext import commands
 
+
 class HelpModule(object):
 
     def __init__(self, bot):
         self.bot = bot
         self.cogs = {}
 
-
     async def send_cmd_list(self):
-        cmd_list = ''
+        pass
 
 
 def setup(bot):
