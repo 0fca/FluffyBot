@@ -1,5 +1,4 @@
 import ujson
-import re
 
 
 class jsonScrapper(object):
@@ -10,14 +9,15 @@ class jsonScrapper(object):
         self.result = {}
         self.spliced = []
 
-#avalible parsers
+# avalible parsers
         self.indexes = {"default": 0,
                         "e9": 1,
                         "e6": 2,
-                        "dp": 3}
+                        "dp": 3,
+                        "imgur": 4}
 
-#decide which to use, and get those values
-    def get_values(self, site_index = "default"):
+# decide which to use, and get those values
+    def get_values(self, site_index="default"):
         items = ujson.decode(self.json_str)
         length = len(items)
         self.result.clear()
@@ -25,22 +25,25 @@ class jsonScrapper(object):
             type = self.indexes[site_index]
 
             if type == 0:
-                print("Please, provide and index by which you want to parse your json")
+                print("Provide and index by which you want to parse your json")
             if type == 1:
                 print("e9")
-                self.__e9(items,length)
+                self.__e9(items, length)
             if type == 2:
                 print("e6")
                 self.__e6(items, length)
             if type == 3:
                 print("dp")
                 self.__dp(items, length)
+            if type == 4:
+                print("imgur")
 
-        else: print("Wrong index, please provide a valid index")
+        else:
+            print("Wrong index, please provide a valid index")
 
         return self.result
 
-#actual parsers
+# actual parsers
     def __e9(self, items, lenght):
         for item in items:
             for key in self.keys:
@@ -50,21 +53,30 @@ class jsonScrapper(object):
                     self.result[key] = []
                     self.result[key].append(item[key])
 
-    def __e6(self,items, lenght):
+    def __e6(self, items, lenght):
         self.__e9(items, lenght)
 
     def __dp(self, items, lenght):
         for item in items['search']:
             for key in self.keys:
                 try:
-                    if key == 'image': self.result[key].append("http:" + item[key])
-                    else:self.result[key].append(item[key])
+                    if key == 'image':
+                        self.result[key].append("http:" + item[key])
+                    else:
+                        self.result[key].append(item[key])
                 except KeyError:
                     self.result[key] = []
-                    if key == 'image': self.result[key].append("http:" + item[key])
-                    else: self.result[key].append(item[key])
+                    if key == 'image':
+                        self.result[key].append("http:" + item[key])
+                    else:
+                        self.result[key].append(item[key])
 
-#setters
+    def imgur(self, items, lenght):
+        for item in self.items:
+            for key in self.keys:
+                pass
+
+# setters
     def set_keys(self, new_keys: []):
         """
         new list of key, scrapper will search for them in the json string

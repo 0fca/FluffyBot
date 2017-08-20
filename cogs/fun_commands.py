@@ -3,6 +3,7 @@ from discord.ext import commands
 from cogs.utils.botErrors import BotErrors
 from cogs.utils.checks import checks
 
+
 class fun_commands(object):
     def __init__(self, bot: commands.Bot):
         self.bot = bot
@@ -48,7 +49,7 @@ class fun_commands(object):
         await ctx.send(random_quotes[random.randint(0, len(random_quotes))] + '\n' + 'https://www.youtube.com/watch?v=Ky2UP5j_pK8')
 
     @commands.command()
-    async def fuckthis(self,ctx):
+    async def fuckthis(self, ctx):
         random_quotes = ['Man...',
                          "ARE YOU FUCKING KIDDING ME?!",
                          " ",
@@ -67,7 +68,7 @@ class fun_commands(object):
         await ctx.send(ayylmao_repo[rand])
 
     @commands.command()
-    async def itsimportant(self,ctx):
+    async def itsimportant(self, ctx):
         await ctx.send('https://www.youtube.com/watch?v=q6EoRBvdVPQ&list=PL7XlqX4npddfrdpMCxBnNZXg2GFll7t5y')
 
     @commands.command()

@@ -9,6 +9,7 @@ opts = {'command_prefix': configJson.default_prefix,
 
 bot = commands.Bot(**opts)
 
+
 @bot.event
 async def on_ready():
     print('Logged in as')
@@ -17,9 +18,11 @@ async def on_ready():
     print(discord.version_info)
     print('------')
 
+
 @bot.command()
-async def foo(ctx, * ,arg: str):
+async def foo(ctx, *, arg: str):
     await ctx.send(arg)
+
 
 if __name__ == '__main__':
     for e in configJson.extensions:

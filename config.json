@@ -9,6 +9,9 @@
   "ml_type": ["anime", "manga"],
   "ml_suffix": "/search.xml?q=",
 
+  "imgur_client_id": "2cdd58a1a90bde9",
+  "imgur_client_secret": "48830d869df15a79a5a539079830cc17183bf7ff",
+
   "extensions": [
     "cogs.fun_commands",
     "cogs.DerpiBooru",
