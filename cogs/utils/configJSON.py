@@ -58,3 +58,7 @@ try:
 except Exception:
     print("you have no imgur")
 
+try:
+    google_id = bot_cofig['google_id']
+except Exception:
+    print("you have no google api key") 

@@ -1,7 +1,7 @@
-import requests
-from discord.ext import commands
-
 from cogs.utils.scrappers import jsonScrapper
+from discord.ext import commands
+import requests
+
 
 
 class DerpiBooru(object):

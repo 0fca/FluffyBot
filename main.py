@@ -18,11 +18,6 @@ async def on_ready():
     print('------')
 
 
-@bot.command()
-async def foo(ctx, *, arg: str):
-    await ctx.send(arg)
-
-
 if __name__ == '__main__':
     for e in configJson.extensions:
         bot.load_extension(e)
