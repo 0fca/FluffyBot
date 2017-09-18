@@ -19,6 +19,8 @@
     "cogs.e926",
     "cogs.Reddit",
     "cogs.google",
-    "cogs.wikipedia"
+    "cogs.wikipedia",
+    "cogs.useful_commands",
+    "cogs.testCog"
   ]
 }

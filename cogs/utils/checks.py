@@ -1,4 +1,4 @@
 class checks(object):
 
-    def is_loli(self, channel):
+    async def is_loli(self, channel):
         return True if "loli" in channel.name.lower() and channel.is_nsfw() else False

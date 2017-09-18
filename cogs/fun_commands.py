@@ -91,6 +91,9 @@ class fun_commands(object):
         except IndexError:
             await ctx.send("Something went wrong. Here's how to use this command: \n [prefix]decide first or second")
 
+    @commands.command()
+    async def triggered(self, ctx):
+        await ctx.send("triggered")
 
 def setup(bot):
     print("added UserUtils module")

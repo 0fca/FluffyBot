@@ -2,6 +2,11 @@ import ujson
 
 bot_config = {}
 
+def reload_config():
+    with open("config.json", "r") as jsonF:
+        return ujson.load(jsonF)
+
+
 try:
     with open("config.json", "r") as jsonFile:
         bot_config = ujson.load(jsonFile)
@@ -43,7 +48,7 @@ try:
     default_status = bot_config["default_status"]
 except KeyError:
     print("No status saved, default will be used")
-    default_status = "say " + default_prefix + "help, for help"
+    default_status = "say {p} help, for help".format(p=default_prefix)
 
 try:
     ml_search_link = bot_config["ml_search_link"]
@@ -59,6 +64,6 @@ except Exception:
     print("you have no imgur")
 
 try:
-    google_id = bot_cofig['google_id']
+    google_id = bot_config['google_id']
 except Exception:
     print("you have no google api key") 
