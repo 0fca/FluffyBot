@@ -1,4 +1,4 @@
-Fluffy bot is a general purpose bot, but mostly utility and fun based one. It allows you to listento your favorite music, search for images on variety of sites all over the net and much more! 
+Fluffy bot is a general purpose bot, but mostly utility and fun based one. It allows you to listen to your favorite music, search for images on variety of websites all over the net and much more! 
 Please note, it's still in development and it doesn't work or implemented is fully implemented.
 
 **Features**
