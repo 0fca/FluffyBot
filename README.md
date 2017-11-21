@@ -15,8 +15,8 @@ Fluffy is able to receive commands signed with '//' prefix. At this stage it can
 
 Fluffy needs to have its functionalities extended. 
 
-There are art least 3 things:
-* better scoping of the commands,
+There are at least 3 things:
+* better scoping of the commands so it will look like: <prefix> <command> <subcomms> <args> ,
 * make all of functions working,
 * option of changing prefix.
 
