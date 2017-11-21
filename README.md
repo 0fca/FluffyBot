@@ -18,6 +18,9 @@ Fluffy needs to have its functionalities extended.
 There are at least 3 things:
 * better scoping of the commands so it will look like: <prefix> <command> <subcomms> <args> ,
 * make all of functions working,
+* administrator module,
+* better admin UI,
+* connect to postgresql database,  
 * option of changing prefix.
 
 **Self deployment**
@@ -25,7 +28,7 @@ There are at least 3 things:
 To self host it, you will need to have python 3.5+ installed.  
 
 Dependencies:
-- Python 3.5 
-- Discord.py 
-- Requests 2.18.1+
-- ujson
+- [Python 3.5](https://www.python.org/downloads/) 
+- [Discord.py](http://discordpy.readthedocs.io/en/latest/api.html) 
+- [Requests 2.18.1+](https://pypi.python.org/pypi/requests/2.18.1)
+- [ujson](https://github.com/esnme/ultrajson)
